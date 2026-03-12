@@ -6,18 +6,18 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Fault Code Converter">
+  <meta name="description" content="Flet application.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="DTC Tool">
+  <meta name="apple-mobile-web-app-title" content="web_build">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>DTC Tool</title>
+  <title>web_build</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -25,12 +25,12 @@
       pyodide: false,
       multiView: false,
       noCdn: false,
-      webSocketEndpoint: "ws",
-      entrypointBaseUrl: "./",
-      assetBase: "./",
+      webSocketEndpoint: "/ws",
+      entrypointBaseUrl: "/",
+      assetBase: "/",
       routeUrlStrategy: "path",
-      canvasKitBaseUrl: "canvaskit/",
-      pyodideUrl: "pyodide/pyodide.js",
+      canvasKitBaseUrl: "/canvaskit/",
+      pyodideUrl: "/pyodide/pyodide.js",
       webRenderer: "auto",
       fontFallbackBaseUrl: "assets/fonts/", // for Noto Emoji, use Google CDN
       appPackageUrl: "app.tar.gz"
@@ -80,8 +80,8 @@ flet.pythonModuleName = "main";
 flet.noCdn=false;
 flet.webRenderer="auto";
 flet.routeUrlStrategy="path";
-flet.entrypointBaseUrl="./";
-flet.assetBase="./";
+flet.entrypointBaseUrl="/";
+flet.assetBase="/";
 </script>
 
   <script src="python.js"></script>

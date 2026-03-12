@@ -1,11 +1,11 @@
 {
-  "name": "DTC Tool",
-  "short_name": "DTC",
+  "name": "web_build",
+  "short_name": "web_build",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#0175C2",
-  "description": "Fault Code Converter",
+  "description": "Flet - the fastest way to build Flutter apps in Python",
   "orientation": "natural",
   "prefer_related_applications": false,
   "icons": [
