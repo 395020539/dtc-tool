@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# PyInstaller
+build/
+dist/*.tar.gz
+*.spec
+
+# Build artifacts (keep dist folder for Pages deployment if needed, but usually we ignore dist if it's generated. However, for simple deployment, let's keep it unless user uses separate branch)
+# We will keep dist/ for now as user wants to deploy easily.
+
+# Executables
+output/
+*.exe
+
+# IDE
+.vscode/
+.idea/
