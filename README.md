@@ -1,39 +1,90 @@
-# dtc-tool
+# DTC Tool - 故障码转换工具
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+## 简介
+DTC Tool 是一款基于 SAE J2012 标准的故障码转换工具。它支持将 **2 字节/3 字节十六进制内码** 与 **5 位/7 位 DTC 显示码** 之间进行双向转换。无论是单个故障码的快速查询，还是大量故障码的批量处理，本工具都能提供高效便捷的解决方案。
 
-#### 软件架构
-软件架构说明
+## 功能特性
+- **双向转换**：支持十六进制内码 <=> DTC 显示码的互转。
+- **多格式支持**：
+  - 十六进制内码：支持 4 位 (2 字节) 和 6 位 (3 字节) 格式。
+  - DTC 显示码：支持 5 位和 7 位格式。
+- **单次转换模式**：提供直观的界面，用于快速转换单个故障码，并显示转换来源和结果类型。
+- **批量转换模式**：支持多行输入，一键批量处理大量故障码，结果清晰展示。
+- **剪贴板集成**：批量转换结果可一键复制到剪贴板，方便粘贴使用。
+- **用户友好界面**：采用 Flet 框架构建，界面简洁、响应迅速。
 
+## 安装
 
-#### 安装教程
+### 1. 环境准备
+确保您的系统已安装 Python 3.8 或更高版本。建议使用虚拟环境进行项目管理。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+```bash
+# 创建虚拟环境 (如果尚未创建)
+python -m venv .venv
 
-#### 使用说明
+# 激活虚拟环境
+# Windows
+.venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 2. 安装依赖
+激活虚拟环境后，安装 Flet 和 PyInstaller：
 
-#### 参与贡献
+```bash
+pip install flet pyinstaller
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 运行
 
+激活虚拟环境后，在项目根目录运行 `main.py` 即可启动应用程序：
 
-#### 特技
+```bash
+python main.py
+```
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 打包为可执行文件
+
+项目提供了一个 `package.bat` 脚本，可以方便地将应用程序打包为 Windows 可执行文件 (`.exe`)。
+
+1.  **确保已安装依赖** (见上文)。
+2.  **运行打包脚本**：
+
+    ```bash
+    .\package.bat
+    ```
+    脚本将自动执行以下操作：
+    -   检查并安装 `flet` 和 `pyinstaller`。
+    -   清理旧的构建文件。
+    -   生成应用程序图标 (`app_icon.ico`)。
+    -   使用 `flet pack` 命令打包 `main.py` 为 `DTCTool.exe`。
+    -   将生成的 `DTCTool.exe` 移动到 `output` 文件夹。
+
+打包完成后，您将在项目根目录下的 `output` 文件夹中找到 `DTCTool.exe`。
+
+## 使用说明
+
+### 单次转换模式
+1.  启动应用程序后，默认进入“Single Mode”。
+2.  在“Internal Code (Hex)”输入框中输入十六进制故障码 (例如 `0120` 或 `0120FF`)，点击右侧的箭头按钮转换为 DTC。
+3.  在“Standard DTC”输入框中输入 DTC 显示码 (例如 `P0120` 或 `P0120FF`)，点击左侧的箭头按钮转换为十六进制。
+4.  转换结果将显示在下方的结果区域，并标明来源和结果类型。
+
+### 批量转换模式
+1.  点击顶部的“Batch Mode”按钮切换到批量转换界面。
+2.  在“Input Codes (One per line)”文本框中，每行输入一个故障码（可以是十六进制或 DTC）。
+3.  点击“Batch Hex -> DTC”将所有十六进制码转换为 DTC。
+4.  点击“Batch DTC -> Hex”将所有 DTC 码转换为十六进制。
+5.  转换结果将显示在下方的“Results”文本框中。
+6.  点击“Copy All Results”按钮可将所有结果复制到剪贴板。
+
+## 技术栈
+-   **Flet**：用于构建跨平台桌面和 Web UI。
+-   **Python**：后端逻辑和应用程序开发语言。
+
+## 作者
+-   YangZL
+
+## 许可证
+(待补充)
